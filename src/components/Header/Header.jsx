@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.scss";
 import logo from "../../assets/pizza-logo.png";
+import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
   return (
@@ -22,16 +23,16 @@ const Header = (props) => {
         <nav className="header__nav">
           <ul className="header__nav--list">
             <li className="header__nav--list--item">
-              <a href="/">Пицца</a>
+              <NavLink to="/pizza">Пицца</NavLink>
             </li>
             <li className="header__nav--list--item">
-              <a href="/">Закуски</a>
+              <NavLink to="/beverages">Напитки</NavLink>
             </li>
             <li className="header__nav--list--item">
-              <a href="/">Напитки</a>
+              <NavLink to="/snacks">Закуски</NavLink>
             </li>
             <li className="header__nav--list--item">
-              <a href="/">О нас</a>
+              <NavLink to="/about">О нас</NavLink>
             </li>
           </ul>
         </nav>
