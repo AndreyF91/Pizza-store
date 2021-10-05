@@ -63,6 +63,43 @@ let initialState = {
       pizzaPrice: "17,90",
     },
   ],
+  beverages: [
+    {
+      id: 1001,
+      beverageImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/ae2694cd57004c1fa6b92052dbc0ed54_292x292.jpeg",
+      beverageName: "Pepsi",
+      beverageDescription: "0,5 л",
+      beveragePrice: "2,70"
+    },
+    {
+      id: 1002,
+      beverageImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/Drinks/ru-RU/26d3bb4d-d99a-4c39-86c9-4d5533bf4e0a.jpg",
+      beverageName: "7Up",
+      beverageDescription: "0,5 л",
+      beveragePrice: "2,70"
+    },
+    {
+      id: 1003,
+      beverageImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/Drinks/ru-RU/c6ef23c6-f93b-490a-baa9-a0bd4879da0d.jpg",
+      beverageName: "Mirinda",
+      beverageDescription: "0,5 л",
+      beveragePrice: "2,70"
+    },
+    {
+      id: 1004,
+      beverageImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/0c4433e92db6435aba66d744f24e7f47_292x292.jpeg",
+      beverageName: "Кофе Ванильный капучино",
+      beverageDescription: "Горячий напиток на основе эспрессо со вспененным молоком и ванильным сиропом. 0,3 л",
+      beveragePrice: "4,90"
+    },
+    {
+      id: 1005,
+      beverageImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/37183960816548f2a029545ce935b5a9_292x292.jpeg",
+      beverageName: "Кофе Карамельный капучино",
+      beverageDescription: "Горячий напиток на основе эспрессо с добавлением вспененного молока и карамельного сиропа. 0,3 л",
+      beveragePrice: "4,90"
+    }
+  ]
 };
 
 const pizzaReducer = (state = initialState, action) => {

@@ -1,8 +1,8 @@
 import { combineReducers, createStore } from "redux";
-import pizzaReducer from "./pizza-reducer";
+import goodsReducer from "./goods-reducer";
 
 let reducers = combineReducers({
-    pizzaPage: pizzaReducer
+    goodsPage: goodsReducer
 });
 
 let store = createStore(reducers);

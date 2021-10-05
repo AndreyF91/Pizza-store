@@ -8,7 +8,6 @@
         margin: 0 auto;
     }
     &__inner {
-        
         height: 100px;
         display: flex;
         justify-content: space-between;
@@ -35,11 +34,20 @@
         &--list {
             display: flex;
             justify-content: center;
+            li {
+                border-bottom: 1px solid transparent;
+                &:hover {
+                    border-bottom: 1px solid orangered;
+                }
+            }
+            a:hover {
+                color: orangered;
+            }
             li + li {
                 margin-left: 45px;
             }
             &--item {
-                font-size: 19px;
+                font-size: 20px;
             }
         }
     }
