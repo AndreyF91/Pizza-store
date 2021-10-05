@@ -4,7 +4,7 @@ import logo from "../../assets/pizza-logo.png";
 
 const Header = (props) => {
   return (
-    <div className="header">
+    <header className="header">
       <div className="header__container">
         <div className="header__inner">
           <div className="header__logo">
@@ -36,7 +36,7 @@ const Header = (props) => {
           </ul>
         </nav>
       </div>
-    </div>
+    </header>
   );
 };
 

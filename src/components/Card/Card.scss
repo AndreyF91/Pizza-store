@@ -1,0 +1,41 @@
+.card {
+    width: 280px;
+
+    &__img {
+        width: 100%;
+        cursor: pointer;
+        transition: .5s;
+        &:hover {
+            transform: translateY(15px);
+        }
+    }
+    &__info {
+        p {
+            font-size: 15px;
+            color: rgb(92, 99, 112);
+        }
+    }
+    &__price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p {
+            font-size: 21px;
+            font-weight: 500;
+        }
+    }
+    &__btn {
+        background-color: rgb(230, 230, 230);
+        width: 100px;
+        height: 40px;
+        border: none;
+        border-radius: 30px;
+        font-size: 15px;
+        color: rgb(233, 75, 17);
+        transition: .5s;
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(231, 204, 195); ;
+        }
+    }
+}
