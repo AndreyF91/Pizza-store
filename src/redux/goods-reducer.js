@@ -99,6 +99,43 @@ let initialState = {
       beverageDescription: "Горячий напиток на основе эспрессо с добавлением вспененного молока и карамельного сиропа. 0,3 л",
       beveragePrice: "4,90"
     }
+  ],
+  snacks: [
+    {
+      id: 2001,
+      snackImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/1378c8b9afaf4daeaabecb96cd8232d2_292x292.jpeg",
+      snackName: "Острый Додстер",
+      snackDescription: "Горячая закуска с цыпленком, перцем халапеньо, солеными огурчиками, томатами, моцареллой и соусом барбекю в тонкой пшеничной лепешке",
+      snackPrice: "4,90"
+    },
+    {
+      id: 2002,
+      snackImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/273e48a66bf74a1faa76454662c53429_292x292.jpeg",
+      snackName: "Додстер",
+      snackDescription: "Легендарная горячая закуска с цыплёнком, томатами, моцареллой, соусом ранч в тонкой пшеничной лепешке",
+      snackPrice: "4,90"
+    },
+    {
+      id: 2003,
+      snackImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/3436a4c72c1340d2ba8b61b5ef8d84ab_292x292.jpeg",
+      snackName: "Грибной Стартер",
+      snackDescription: "Горячая закуска с шампиньонами, моцареллой и соусом ранч в тонкой пшеничной лепешке",
+      snackPrice: "5,60"
+    },
+    {
+      id: 2004,
+      snackImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/925e70c844ee41789097735d880dbd23_292x292.jpeg",
+      snackName: "Блинчики с ветчиной и сыром",
+      snackDescription: "2шт.Воздушные блинчики с сыром и ветчиной из свинины, приготовленные в печи",
+      snackPrice: "5,90"
+    },
+    {
+      id: 2005,
+      snackImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/073641ddaa9c4fbe802d27f2046011da_292x292.jpeg",
+      snackName: "Картофельные оладьи",
+      snackDescription: "Запеченные оладьи из картофеля в панировке, 8 шт",
+      snackPrice: "6,90"
+    },
   ]
 };
 

@@ -23,7 +23,7 @@ const PizzaContainer = (props) => {
 
 let mapStateToProps = (state) => ({
     
-    pizza: state.pizzaPage.pizza
+    pizza: state.goodsPage.pizza
 })
 
 
