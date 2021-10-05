@@ -1,5 +1,6 @@
 .card {
     width: 280px;
+    margin-bottom: 30px;
 
     &__img {
         width: 100%;
@@ -10,6 +11,7 @@
         }
     }
     &__info {
+        height: 120px;
         p {
             font-size: 15px;
             color: rgb(92, 99, 112);

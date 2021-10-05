@@ -1,8 +1,8 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
-import PizzaCard from "./components/Card/Card";
 import { BrowserRouter } from "react-router-dom";
 import { Route } from "react-router";
+import PizzaContainer from "./components/Pizza/PizzaContainer";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <div className="App">
         <Header />
         <section className="main">
-          <Route path="/pizza" render={() => <PizzaCard />} />
+          <Route path="/pizza" render={() => <PizzaContainer />} />
         </section>
       </div>
     </BrowserRouter>
