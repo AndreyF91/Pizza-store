@@ -2,6 +2,7 @@ import React from "react";
 import "./Card.scss";
 
 const Card = (props) => {
+  debugger
   return (
     <div className="card">
       <img
@@ -17,7 +18,7 @@ const Card = (props) => {
       </div>
       <div className="card__price">
         <p>от {props.price} руб.</p>
-        <button className="card__btn" type="button">Выбрать</button>
+        <button className="card__btn" type="button" onClick={() => props.showInfo(props.item)}>Выбрать</button>
       </div>
     </div>
   );

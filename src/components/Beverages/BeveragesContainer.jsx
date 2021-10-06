@@ -8,10 +8,13 @@ const BeveragesContainer = (props) => {
     <div className="beverages__wrapper">
       {props.beverages.map((item) => (
         <Card
-          img={item.beverageImg}
-          name={item.beverageName}
-          description={item.beverageDescription}
-          price={item.beveragePrice}
+          item={item}
+          showInfo={props.showInfo}
+          setActive={props.setActive}
+          img={item.itemImg}
+          name={item.itemName}
+          description={item.itemDescription}
+          price={item.itemPrice}
         />
       ))}
     </div>
@@ -21,6 +24,5 @@ const BeveragesContainer = (props) => {
 const mapStateToProps = (state) => ({
   beverages: state.goodsPage.beverages,
 });
-
 
 export default connect(mapStateToProps)(BeveragesContainer);

@@ -5,7 +5,7 @@
     &__img {
         width: 100%;
         cursor: pointer;
-        transition: .5s;
+        transition: 0.5s;
         &:hover {
             transform: translateY(15px);
         }
@@ -34,10 +34,10 @@
         border-radius: 30px;
         font-size: 15px;
         color: rgb(233, 75, 17);
-        transition: .5s;
+        transition: 0.5s;
         cursor: pointer;
         &:hover {
-            background-color: rgb(231, 204, 195); ;
+            background-color: rgb(231, 204, 195);
         }
     }
 }

@@ -1,0 +1,33 @@
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: #000, $alpha: 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.5s all;
+
+    &--active {
+        @extend .modal;
+        opacity: 1;
+        pointer-events: all;
+    }
+    &__content {
+        display: flex;
+        padding: 15px;
+        border-radius: 15px;
+        background-color: #fff;
+        width: 50vw;
+        transform: scale(0.5);
+        transition: 0.5s;
+        &--active {
+            @extend .modal__content;
+            transform: scale(1);
+        }
+    }
+}

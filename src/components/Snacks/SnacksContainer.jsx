@@ -8,10 +8,13 @@ const SnacksContainer = (props) => {
     <div className="snacks__wrapper">
       {props.snacks.map((item) => (
         <Card
-          img={item.snackImg}
-          name={item.snackName}
-          description={item.snackDescription}
-          price={item.snackPrice}
+          item={item}
+          showInfo={props.showInfo}
+          setActive={props.setActive}
+          img={item.itemImg}
+          name={item.itemName}
+          description={item.itemDescription}
+          price={item.itemPrice}
         />
       ))}
     </div>
