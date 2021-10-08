@@ -1,12 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
 import Card from "../Card/Card";
-import "./SnacksContainer.scss";
+import "./GoodsContainer.scss";
 
-const SnacksContainer = (props) => {
+const GoodsContainer = (props) => {
   return (
-    <div className="snacks__wrapper">
-      {props.snacks.map((item) => (
+    <div className="pizza__wrapper">
+      {props.data.map((item) => (
         <Card
           item={item}
           showInfo={props.showInfo}
@@ -21,8 +20,4 @@ const SnacksContainer = (props) => {
   );
 };
 
-let mapStateToProps = (state) => ({
-  snacks: state.goodsPage.snacks,
-});
-
-export default connect(mapStateToProps)(SnacksContainer);
+export default GoodsContainer;

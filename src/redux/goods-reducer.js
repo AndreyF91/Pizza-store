@@ -1,3 +1,5 @@
+const ADD_ORDER = "ADD-ORDER";
+
 let initialState = {
   pizza: [
     {
@@ -7,7 +9,17 @@ let initialState = {
       itemName: "Мексиканская",
       itemDescription:
         "Острый цыпленок, томатный соус, сладкий перец, красный лук, моцарелла, острый перец халапеньо, томаты, соус сальса",
-      itemPrice: "17,90",
+      itemPrice: "17.90",
+      itemSize: {
+        Small: "400",
+        Mid: "700",
+        Big: "1000",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
     {
       id: 2,
@@ -16,7 +28,17 @@ let initialState = {
       itemName: "Чизбургер-пицца",
       itemDescription:
         "Мясной соус болоньезе, моцарелла, красный лук, соленые огурчики, томаты, соус бургер",
-      itemPrice: "14,90",
+      itemPrice: "14.90",
+      itemSize: {
+        Small: "400",
+        Mid: "700",
+        Big: "1000",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
     {
       id: 3,
@@ -25,7 +47,17 @@ let initialState = {
       itemName: "Четыре сыра",
       itemDescription:
         "Сливочный соус, сыры пармезан и чеддер, сыр блю чиз, моцарелла",
-      itemPrice: "17,90",
+      itemPrice: "17.90",
+      itemSize: {
+        Small: "400",
+        Mid: "700",
+        Big: "1000",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
     {
       id: 4,
@@ -33,7 +65,17 @@ let initialState = {
         "https://dodopizza-a.akamaihd.net/static/Img/Products/a6492db07919436a955adf66395eb377_292x292.jpeg",
       itemName: "Пепперони фреш",
       itemDescription: "Томаты, пепперони, моцарелла, томатный соус",
-      itemPrice: "5,90",
+      itemPrice: "5.90",
+      itemSize: {
+        Small: "400",
+        Mid: "700",
+        Big: "1000",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
     {
       id: 5,
@@ -42,7 +84,17 @@ let initialState = {
       itemName: "Чизбургер-пицца",
       itemDescription:
         "Мясной соус болоньезе, моцарелла, красный лук, соленые огурчики, томаты, соус бургер",
-      itemPrice: "14,90",
+      itemPrice: "14.90",
+      itemSize: {
+        Small: "400",
+        Mid: "700",
+        Big: "1000",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
     {
       id: 6,
@@ -51,7 +103,17 @@ let initialState = {
       itemName: "Четыре сыра",
       itemDescription:
         "Сливочный соус, сыры пармезан и чеддер, сыр блю чиз, моцарелла",
-      itemPrice: "17,90",
+      itemPrice: "17.90",
+      itemSize: {
+        Small: "400",
+        Mid: "700",
+        Big: "1000",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
     {
       id: 7,
@@ -60,87 +122,258 @@ let initialState = {
       itemName: "Мексиканская",
       itemDescription:
         "Острый цыпленок, томатный соус, сладкий перец, красный лук, моцарелла, острый перец халапеньо, томаты, соус сальса",
-      itemPrice: "17,90",
+      itemPrice: "17.90",
+      itemSize: {
+        Small: "400",
+        Mid: "700",
+        Big: "1000",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
+    },
+    {
+      id: 8,
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/628a3f67-1d51-4c0b-9761-7ee6b7985506.jpg",
+      itemName: "Пицца-пирог",
+      itemDescription: "Ананасы, молоко сгущеное, брусника",
+      itemPrice: "5.90",
+      itemSize: {
+        Small: "400",
+        Mid: "700",
+        Big: "1000",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
   ],
   beverages: [
     {
       id: 1001,
-      itemImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/ae2694cd57004c1fa6b92052dbc0ed54_292x292.jpeg",
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ae2694cd57004c1fa6b92052dbc0ed54_292x292.jpeg",
       itemName: "Pepsi",
       itemDescription: "0,5 л",
-      itemPrice: "2,70"
+      itemPrice: "2.0",
     },
     {
       itemid: 1002,
-      itemImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/Drinks/ru-RU/26d3bb4d-d99a-4c39-86c9-4d5533bf4e0a.jpg",
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/Drinks/ru-RU/26d3bb4d-d99a-4c39-86c9-4d5533bf4e0a.jpg",
       itemName: "7Up",
       itemDescription: "0,5 л",
-      itemPrice: "2,70"
+      itemPrice: "2.70",
     },
     {
       itemid: 1003,
-      itemImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/Drinks/ru-RU/c6ef23c6-f93b-490a-baa9-a0bd4879da0d.jpg",
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/Drinks/ru-RU/c6ef23c6-f93b-490a-baa9-a0bd4879da0d.jpg",
       itemName: "Mirinda",
       itemDescription: "0,5 л",
-      itemPrice: "2,70"
+      itemPrice: "2.70",
     },
     {
       itemid: 1004,
-      itemImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/0c4433e92db6435aba66d744f24e7f47_292x292.jpeg",
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/0c4433e92db6435aba66d744f24e7f47_292x292.jpeg",
       itemName: "Кофе Ванильный капучино",
-      itemDescription: "Горячий напиток на основе эспрессо со вспененным молоком и ванильным сиропом. 0,3 л",
-      itemPrice: "4,90"
+      itemDescription:
+        "Горячий напиток на основе эспрессо со вспененным молоком и ванильным сиропом. 0,3 л",
+      itemPrice: "4.90",
     },
     {
       itemid: 1005,
-      itemImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/37183960816548f2a029545ce935b5a9_292x292.jpeg",
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/37183960816548f2a029545ce935b5a9_292x292.jpeg",
       itemName: "Кофе Карамельный капучино",
-      itemDescription: "Горячий напиток на основе эспрессо с добавлением вспененного молока и карамельного сиропа. 0,3 л",
-      itemPrice: "4,90"
-    }
+      itemDescription:
+        "Горячий напиток на основе эспрессо с добавлением вспененного молока и карамельного сиропа. 0,3 л",
+      itemPrice: "4.90",
+    },
+    {
+      id: 1006,
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/e67a5541111346529408be9ae79ff3f1_292x292.jpeg",
+      itemName: "Пунш Спайси Оранж",
+      itemDescription:
+        "Согревающий пряный напиток с мякотью апельсина, соком лайма, имбирем, корицей, бадьяном, кориандром и гвоздикой. 0,3 л",
+      itemPrice: "3.80",
+    },
+    {
+      id: 1007,
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/ae2694cd57004c1fa6b92052dbc0ed54_292x292.jpeg",
+      itemName: "Pepsi",
+      itemDescription: "0,5 л",
+      itemPrice: "2.0",
+    },
+    {
+      itemid: 1008,
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/Drinks/ru-RU/26d3bb4d-d99a-4c39-86c9-4d5533bf4e0a.jpg",
+      itemName: "7Up",
+      itemDescription: "0,5 л",
+      itemPrice: "2.70",
+    },
+    {
+      itemid: 1009,
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/Drinks/ru-RU/c6ef23c6-f93b-490a-baa9-a0bd4879da0d.jpg",
+      itemName: "Mirinda",
+      itemDescription: "0,5 л",
+      itemPrice: "2.70",
+    },
+    {
+      itemid: 1010,
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/0c4433e92db6435aba66d744f24e7f47_292x292.jpeg",
+      itemName: "Кофе Ванильный капучино",
+      itemDescription:
+        "Горячий напиток на основе эспрессо со вспененным молоком и ванильным сиропом. 0,3 л",
+      itemPrice: "4.90",
+    },
+    {
+      itemid: 1011,
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/37183960816548f2a029545ce935b5a9_292x292.jpeg",
+      itemName: "Кофе Карамельный капучино",
+      itemDescription:
+        "Горячий напиток на основе эспрессо с добавлением вспененного молока и карамельного сиропа. 0,3 л",
+      itemPrice: "4.90",
+    },
+    {
+      id: 1012,
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/e67a5541111346529408be9ae79ff3f1_292x292.jpeg",
+      itemName: "Пунш Спайси Оранж",
+      itemDescription:
+        "Согревающий пряный напиток с мякотью апельсина, соком лайма, имбирем, корицей, бадьяном, кориандром и гвоздикой. 0,3 л",
+      itemPrice: "3.80",
+    },
   ],
   snacks: [
     {
       id: 2001,
-      itemImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/1378c8b9afaf4daeaabecb96cd8232d2_292x292.jpeg",
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/1378c8b9afaf4daeaabecb96cd8232d2_292x292.jpeg",
       itemName: "Острый Додстер",
-      itemDescription: "Горячая закуска с цыпленком, перцем халапеньо, солеными огурчиками, томатами, моцареллой и соусом барбекю в тонкой пшеничной лепешке",
-      itemPrice: "4,90"
+      itemDescription:
+        "Горячая закуска с цыпленком, перцем халапеньо, солеными огурчиками, томатами, моцареллой и соусом барбекю в тонкой пшеничной лепешке",
+      itemPrice: "4.90",
+
+      itemSize: {
+        Small: "500",
+        Mid: "700",
+        Big: "850",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
     {
       id: 2002,
-      itemImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/273e48a66bf74a1faa76454662c53429_292x292.jpeg",
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/273e48a66bf74a1faa76454662c53429_292x292.jpeg",
       itemName: "Додстер",
-      itemDescription: "Легендарная горячая закуска с цыплёнком, томатами, моцареллой, соусом ранч в тонкой пшеничной лепешке",
-      itemPrice: "4,90"
+      itemDescription:
+        "Легендарная горячая закуска с цыплёнком, томатами, моцареллой, соусом ранч в тонкой пшеничной лепешке",
+      itemPrice: "4.90",
+      itemSize: {
+        Small: "500",
+        Mid: "700",
+        Big: "850",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
     {
       id: 2003,
-      itemImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/3436a4c72c1340d2ba8b61b5ef8d84ab_292x292.jpeg",
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/3436a4c72c1340d2ba8b61b5ef8d84ab_292x292.jpeg",
       itemName: "Грибной Стартер",
-      itemDescription: "Горячая закуска с шампиньонами, моцареллой и соусом ранч в тонкой пшеничной лепешке",
-      itemPrice: "5,60"
+      itemDescription:
+        "Горячая закуска с шампиньонами, моцареллой и соусом ранч в тонкой пшеничной лепешке",
+      itemPrice: "5.60",
+      itemSize: {
+        Small: "500",
+        Mid: "700",
+        Big: "850",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
     {
       id: 2004,
-      itemImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/925e70c844ee41789097735d880dbd23_292x292.jpeg",
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/925e70c844ee41789097735d880dbd23_292x292.jpeg",
       itemName: "Блинчики с ветчиной и сыром",
-      itemDescription: "2шт.Воздушные блинчики с сыром и ветчиной из свинины, приготовленные в печи",
-      itemPrice: "5,90"
+      itemDescription:
+        "2шт.Воздушные блинчики с сыром и ветчиной из свинины, приготовленные в печи",
+      itemPrice: "5.90",
+      itemSize: {
+        Small: "500",
+        Mid: "700",
+        Big: "850",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
     {
       id: 2005,
-      itemImg: "https://dodopizza-a.akamaihd.net/static/Img/Products/073641ddaa9c4fbe802d27f2046011da_292x292.jpeg",
+      itemImg:
+        "https://dodopizza-a.akamaihd.net/static/Img/Products/073641ddaa9c4fbe802d27f2046011da_292x292.jpeg",
       itemName: "Картофельные оладьи",
       itemDescription: "Запеченные оладьи из картофеля в панировке, 8 шт",
-      itemPrice: "6,90"
+      itemPrice: "6,90",
+      itemSize: {
+        Small: "500",
+        Mid: "700",
+        Big: "850",
+      },
+      itemAddPrice: {
+        small: "0",
+        mid: "2",
+        big: "3",
+      },
     },
-  ]
+  ],
+  order: [],
 };
 
-const pizzaReducer = (state = initialState, action) => {
-  return state;
+const goodsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_ORDER: {
+      debugger
+      return {
+        ...state,
+        order: [...state.order, action.order],
+      };
+    }
+    default:
+      return state;
+  }
 };
 
-export default pizzaReducer;
+export const addOrderActionCreator = (itemId, itemName, fullPrice) => ({
+  type: ADD_ORDER,
+  order: {itemId, itemName, fullPrice},
+});
+
+export default goodsReducer;
