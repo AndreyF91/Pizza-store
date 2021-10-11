@@ -3,18 +3,25 @@ import "./Modal.scss";
 
 const Modal = ({ active, setActive, cardInfo, addOrder }) => {
   const [radioValue, setRadioValue] = useState(0);
+  const [radioKey, setRadioKey] = useState();
 
-  let onChangeValue = (e) => {
+  const onChangeValue = (e) => {
     setRadioValue(e.target.value);
+    setRadioKey(e.target.id);
   };
+  const fullPrice = +radioValue + +cardInfo.itemPrice;
 
-  let price = +cardInfo.itemPrice;
-  let fullPrice = +radioValue + price;
-
-  let formHandler = () => {
-    let itemId = cardInfo.id;
-    let itemName = cardInfo.itemName;
-    addOrder(itemId, itemName, fullPrice)
+  function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;}
+  
+  const formHandler = () => {
+    let orderId = getRandomIntInclusive(100, 20000);
+    let itemQnt = 1;
+    let calcPrice = fullPrice * itemQnt;
+    addOrder(cardInfo, radioKey, fullPrice, itemQnt, calcPrice, orderId);
+    setActive(false);
   };
 
   return (
@@ -35,10 +42,11 @@ const Modal = ({ active, setActive, cardInfo, addOrder }) => {
           <form>
             <div className="modal__radio">
               {!cardInfo.itemSize
-                ? "Выбора нет"
+                ? "Доступен только один вариант для выбора"
                 : Object.entries(cardInfo.itemSize).map(([key, value]) => (
-                    <div className="modal__radio--btn" onChange={onChangeValue}>
+                    <div key={key} className="modal__radio--btn">
                       <input
+                        onChange={onChangeValue}
                         type="radio"
                         name="size"
                         id={key}
@@ -52,12 +60,17 @@ const Modal = ({ active, setActive, cardInfo, addOrder }) => {
                             : null
                         }
                       />
-                      <label for={key}>{key + " " + value}г.</label>
+                      <label htmlFor={key}>{key + " " + value}г.</label>
                     </div>
                   ))}
             </div>
             <div className="modal__btn--inner">
-              <button type="button" onClick={formHandler} className="modal__btn">
+              <button
+                disabled={!radioKey}
+                type="button"
+                onClick={formHandler}
+                className="modal__btn"
+              >
                 Добавить в корзину за {fullPrice}
               </button>
             </div>

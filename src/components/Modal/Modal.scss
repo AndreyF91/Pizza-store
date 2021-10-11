@@ -55,9 +55,11 @@
             display: flex;
         }
         input[type="radio"] {
+
             display: none;
         }
         label {
+            user-select: none;
             display: block;
             text-align: center;
             width: 110px;
@@ -86,6 +88,10 @@
         &--inner {
             display: flex;
             justify-content: right;
+        }
+        &:disabled {
+            background-color: rgb(231, 231, 231);
+            color: rgb(151, 151, 151);
         }
     }
 }

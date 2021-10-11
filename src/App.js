@@ -18,7 +18,14 @@ function App(props) {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
+        <Header
+          order={props.order}
+          totalCount={props.totalCount}
+          totalPrice={props.totalPrice}
+          removeItem={props.removeItem}
+          increase={props.increase}
+          decrease={props.decrease}
+        />
         <section className="main">
           <Modal
             addOrder={props.addOrder}

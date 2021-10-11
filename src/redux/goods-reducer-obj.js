@@ -366,68 +366,68 @@ let initialState = {
       itemPrice: "6.90",
     },
   ],
-  order: [],
+  order: {},
   totalCount: 0,
   totalPrice: 0,
 };
 
 const getTotalPrice = (arr) =>
-  arr.reduce((sum, obj) => obj.calcPrice + sum, 0).toFixed(2);
-
-const getItem = (arr, action) => arr.find((i) => i.orderId === action);
+  arr.reduce((sum, obj) => obj.itemPrice + sum, 0).toFixed(2);
 
 const goodsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ORDER: {
-      const newItems = [...state.order, action.payload];
+      const newItems = {
+        ...state.order,
+        [action.payload.itemInfo.itemId]: !state.order[
+          action.payload.itemInfo.itemId
+        ]
+          ? [action.payload]
+          : [...state.order[action.payload.itemInfo.itemId], action.payload],
+      };
+
+      const orderArr = [].concat(...Object.values(newItems));
+      const totalPrice = getTotalPrice(orderArr);
       return {
         ...state,
-        order: [...state.order, action.payload],
-        totalCount: newItems.length,
-        totalPrice: getTotalPrice(newItems)
+        order: newItems,
+        totalCount: [].concat(...Object.values(newItems)).length,
+        totalPrice,
       };
     }
     case INCREASE_QNT: {
-      const { itemPrice } = getItem(state.order, action.itemId);
       return {
         ...state,
         order: state.order.map((i) => {
-          if (i.orderId === action.itemId) {
+          if (i.itemInfo.itemId === action.itemId) {
             i.itemQnt = i.itemQnt + 1;
-            i.calcPrice = (i.itemPrice * i.itemQnt).toFixed(2);
           }
           return i;
         }),
-        totalCount: state.totalCount + 1,
-        totalPrice: (Number(state.totalPrice) + Number(itemPrice)).toFixed(2),
       };
     }
     case DECREASE_QNT: {
-      const { itemPrice } = getItem(state.order, action.itemId);
       return {
         ...state,
         order: state.order.map((i) => {
-          if (i.orderId === action.itemId) {
+          if (i.itemInfo.itemId === action.itemId) {
             i.itemQnt = i.itemQnt - 1;
-            i.calcPrice = (i.itemPrice * i.itemQnt).toFixed(2);
           }
           return i;
         }),
-        totalCount: state.totalCount - 1,
-        totalPrice: (Number(state.totalPrice) - Number(itemPrice)).toFixed(2),
       };
     }
     case REMOVE_ITEM: {
-      const { calcPrice, itemQnt } = getItem(state.order, action.itemId);
-      console.log(calcPrice);
-
+      const newItems = {
+        ...state.order,
+      };
+      const currentTotalPrice = newItems[action.itemId].itemPrice;
+      debugger
+      delete newItems[action.itemId];
       return {
         ...state,
-        order: state.order.filter(
-          (cartItem) => cartItem.orderId !== action.itemId
-        ),
-        totalPrice: (state.totalPrice - calcPrice).toFixed(2),
-        totalCount: state.totalCount - itemQnt,
+        order: newItems,
+        totalPrice: state.totalPrice - currentTotalPrice,
       };
     }
     default:
@@ -435,21 +435,13 @@ const goodsReducer = (state = initialState, action) => {
   }
 };
 
-export const addOrderActionCreator = (
-  itemInfo,
-  itemKey,
-  itemPrice,
-  itemQnt,
-  calcPrice,
-  orderId
-) => ({
+export const addOrderActionCreator = (itemInfo, itemKey, itemPrice) => ({
   type: ADD_ORDER,
-  payload: { itemInfo, itemKey, itemPrice, itemQnt, calcPrice, orderId },
+  payload: { itemInfo, itemKey, itemPrice },
 });
 export const increaseQntActionCreator = (itemId) => ({
   type: INCREASE_QNT,
   itemId,
-
 });
 export const decreaseQntActionCreator = (itemId) => ({
   type: DECREASE_QNT,
