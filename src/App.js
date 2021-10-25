@@ -5,6 +5,7 @@ import { useState } from "react";
 import Header from "./components/Header/Header";
 import GoodsContainer from "./components/Pizza/GoodsContainer";
 import Modal from "./components/Modal/Modal";
+import OrderForm from "./components/OrderForm/OrderForm";
 
 function App(props) {
   const [modalActive, setModalActive] = useState(false);
@@ -63,6 +64,10 @@ function App(props) {
                 showInfo={showCardInfo}
               />
             )}
+          />
+          <Route
+            path="/form"
+            render={() => <OrderForm order={props.order} totalPrice={props.totalPrice} />}
           />
         </section>
       </div>
