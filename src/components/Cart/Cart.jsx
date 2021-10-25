@@ -3,7 +3,6 @@ import "./Cart.scss";
 import bin from "../../assets/recycle-bin.png";
 
 const Cart = ({ order, increase, decrease, removeItem }) => {
-  debugger;
   return (
     <div className="cart">
       {order.map((i) => {
@@ -24,25 +23,25 @@ const Cart = ({ order, increase, decrease, removeItem }) => {
                 alt="картинка"
                 className="cart__img"
               />
-              
+
               <div className="cart__info">
-                <p>Тип: {i.itemKey}</p>
+                <p>Тип: {i.itemKey ? i.itemKey : "(...)"}</p>
                 <div className="cart__title--btns">
                 <div className="btns__change">
                   <button
                     disabled={i.itemQnt === 1 ? true : false}
                     onClick={() => decrease(i.orderId)}
                   >
-                    -
+                    - 
                   </button>
-                  <span>{i.itemQnt}</span>
+                  <p>{i.itemQnt}</p>
                   <button onClick={() => increase(i.orderId)}>+</button>{" "}
                 </div>
                 
               </div>
               </div>
               <div className="cart__info--fullPrice">
-                Стоимость: {i.calcPrice}
+                Стоимость: <p>{i.calcPrice}</p> руб
               </div>
             </div>
           </div>

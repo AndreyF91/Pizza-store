@@ -2,20 +2,24 @@ import React, { useState } from "react";
 import "./Modal.scss";
 
 const Modal = ({ active, setActive, cardInfo, addOrder }) => {
+  // добавочная стоимость
   const [radioValue, setRadioValue] = useState(0);
+  // значение радио-кнопки
   const [radioKey, setRadioKey] = useState();
 
   const onChangeValue = (e) => {
     setRadioValue(e.target.value);
     setRadioKey(e.target.id);
   };
-  const fullPrice = +radioValue + +cardInfo.itemPrice;
-
+  
+  // генерируем рандомное значение в пределах (min-max) для ID заказа
   function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;}
   
+  // отправляем выбранный заказ с дополнительными параметрами в state
+  const fullPrice = +radioValue + +cardInfo.itemPrice;
   const formHandler = () => {
     let orderId = getRandomIntInclusive(100, 20000);
     let itemQnt = 1;
@@ -66,13 +70,14 @@ const Modal = ({ active, setActive, cardInfo, addOrder }) => {
             </div>
             <div className="modal__btn--inner">
               <button
-                disabled={!radioKey}
+                disabled={radioKey || !cardInfo.itemSize ? false : true }
                 type="button"
                 onClick={formHandler}
                 className="modal__btn"
               >
-                Добавить в корзину за {fullPrice}
+                Добавить в корзину за {fullPrice} руб
               </button>
+              
             </div>
           </form>
         </div>

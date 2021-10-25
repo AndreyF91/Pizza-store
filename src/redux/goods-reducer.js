@@ -371,8 +371,8 @@ let initialState = {
   totalPrice: 0,
 };
 
-const getTotalPrice = (arr) =>
-  arr.reduce((sum, obj) => obj.calcPrice + sum, 0).toFixed(2);
+// const getTotalPrice = (arr) =>
+//   arr.reduce((sum, obj) => obj.calcPrice + sum, 0).toFixed(2);
 
 const getItem = (arr, action) => arr.find((i) => i.orderId === action);
 
@@ -384,7 +384,7 @@ const goodsReducer = (state = initialState, action) => {
         ...state,
         order: [...state.order, action.payload],
         totalCount: newItems.length,
-        totalPrice: getTotalPrice(newItems)
+        totalPrice: (Number(state.totalPrice) + Number(action.payload.itemPrice)).toFixed(2),
       };
     }
     case INCREASE_QNT: {
@@ -449,7 +449,6 @@ export const addOrderActionCreator = (
 export const increaseQntActionCreator = (itemId) => ({
   type: INCREASE_QNT,
   itemId,
-
 });
 export const decreaseQntActionCreator = (itemId) => ({
   type: DECREASE_QNT,

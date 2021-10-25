@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Header.scss";
 import logo from "../../assets/pizza-logo.png";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Cart from "../Cart/Cart";
 
 const Header = (props) => {
@@ -18,8 +18,15 @@ const Header = (props) => {
           </div>
           <h1>PIZZA-STORE</h1>
           <div className="header__cart">
+            {/* <Button
+              setCartMode={setCartMode}
+              totalCount={props.totalCount}
+              cartMode={cartMode}
+            >
+              Корзина{" "}
+              <span className="header__btn--span">{props.totalCount}</span>
+            </Button> */}
             <button
-              disabled={props.order.length < 1}
               className="header__btn"
               type="button"
               onClick={() => setCartMode(!cartMode)}
@@ -42,8 +49,12 @@ const Header = (props) => {
                   decrease={props.decrease}
                   removeItem={props.removeItem}
                 />
-
-                <span>Сумма заказа: {props.totalPrice} руб.</span>
+                <div className="header__cart--total">
+                  <span>Сумма заказа: {props.totalPrice} руб.</span>
+                  <Link to="/form">
+                    <button onClick={() => setCartMode(false)}>Сделать заказ</button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -51,16 +62,16 @@ const Header = (props) => {
         <nav className="header__nav">
           <ul className="header__nav--list">
             <li className="header__nav--list--item">
-              <NavLink to="/pizza">Пицца</NavLink>
+              <Link to="/pizza">Пицца</Link>
             </li>
             <li className="header__nav--list--item">
-              <NavLink to="/beverages">Напитки</NavLink>
+              <Link to="/beverages">Напитки</Link>
             </li>
             <li className="header__nav--list--item">
-              <NavLink to="/snacks">Закуски</NavLink>
+              <Link to="/snacks">Закуски</Link>
             </li>
             <li className="header__nav--list--item">
-              <NavLink to="/about">О нас</NavLink>
+              <Link to="/about">О нас</Link>
             </li>
           </ul>
         </nav>

@@ -94,5 +94,20 @@
             height: auto;
             border-radius: 7px;
         }
+        &--total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            button {
+                background-color: orangered;
+                width: 110px;
+                height: 40px;
+                border: none;
+                border-radius: 20px;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
     }
 }

@@ -5,8 +5,10 @@ import "./GoodsContainer.scss";
 const GoodsContainer = (props) => {
   return (
     <div className="pizza__wrapper">
+
       {props.data.map((item) => (
         <Card
+        key={item.itemId}
           item={item}
           showInfo={props.showInfo}
           setActive={props.setActive}
